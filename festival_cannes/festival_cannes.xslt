@@ -21,9 +21,9 @@
                 <h1 class="h1">Palmares année 2022</h1>
                 <p class="text-start">Hello palma</p>
 
-                <xsl:for-each select="//film">
+                <xsl:for-each select="/festival_cannes/films/film">
                     <xsl:sort select="titre" />
-                    <xsl:apply-templates select="film"/>
+                    <xsl:apply-templates select="."/>
                 </xsl:for-each>
             </body>
         </html>
