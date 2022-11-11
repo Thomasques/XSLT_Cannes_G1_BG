@@ -30,6 +30,26 @@
     </xsl:template>
 
     <xsl:template match="film">
-        Titre: <span><xsl:value-of select="titre"/></span>
+        <xsl:variable name="id-film" select="./@id"></xsl:variable>
+        <h6>Titre: <xsl:value-of select="titre"/> </h6>
+        <h6>Réalisateurs:</h6>
+        
+        <h6>Année de production : <xsl:value-of select="@annee_production"/></h6>
+        <h6>Date de sortie : <xsl:value-of select="@date_sortie"/></h6>
+        <h6>Durée : <xsl:value-of select="@duree"/></h6>
+        <h6>Nationalités :
+            <xsl:for-each select="//pays[contains (//film[@id = $id-film]/@pays, @code)]"> 
+                <span><xsl:value-of select="."/>  </span>           
+            </xsl:for-each> </h6>
+        <h6>Synopsis :</h6> <p><xsl:value-of select="synopsis"/></p> 
+    </xsl:template>
+
+    <xsl:template match="artiste">
+        <xsl:variable name="sexe-artiste" select="@sesxe"></xsl:variable>
+        <xsl:variable name="pays-artiste" select="@pays"></xsl:variable>
+        <h6 title="sexe : $sexe-artiste pays: $pays">
+            <span><xsl:value-of select="prenom"/>
+            </span><span><xsl:value-of select="nom"/></span>
+        </h6>
     </xsl:template>
 </xsl:stylesheet>
