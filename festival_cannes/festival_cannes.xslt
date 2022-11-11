@@ -31,9 +31,21 @@
 
     <xsl:template match="film">
         <xsl:variable name="id-film" select="./@id"></xsl:variable>
+        <xsl:variable name="rea-film" select="./casting/@realisateurs"></xsl:variable>
+        <xsl:variable name="sena-film" select="./casting/@scenaristes"></xsl:variable>
         <h6>Titre: <xsl:value-of select="titre"/> </h6>
         <h6>Réalisateurs:</h6>
-        
+        <ul>
+            <xsl:for-each select="//artiste[contains($rea-film, @id)]"> 
+                <li><xsl:apply-templates select="."/></li>
+            </xsl:for-each>
+        </ul>
+        <h6>Senaristes</h6>
+        <ul>
+            <xsl:for-each select="//artiste[contains($sena-film, @id)]"> 
+                <li><xsl:apply-templates select="."/></li>
+            </xsl:for-each>
+        </ul>
         <h6>Année de production : <xsl:value-of select="@annee_production"/></h6>
         <h6>Date de sortie : <xsl:value-of select="@date_sortie"/></h6>
         <h6>Durée : <xsl:value-of select="@duree"/></h6>
