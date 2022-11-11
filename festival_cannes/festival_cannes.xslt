@@ -54,6 +54,12 @@
                 <span><xsl:value-of select="."/>  </span>           
             </xsl:for-each> </h6>
         <h6>Synopsis :</h6> <p><xsl:value-of select="synopsis"/></p> 
+        <h6>Casting:</h6>
+        <ul>
+            <xsl:for-each select="//artiste[@id = //film[@id = $id-film]/personnages/personnage/@incarne_par]"> 
+                <li><span><xsl:apply-templates select="."/> <xsl:value-of select="//film[@id = $id-film]/personnages/personnage[@incarne_par = ./@id]"/></span></li>
+            </xsl:for-each>
+        </ul>
     </xsl:template>
 
     <xsl:template match="artiste">
