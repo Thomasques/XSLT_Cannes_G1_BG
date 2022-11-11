@@ -57,9 +57,9 @@
     </xsl:template>
 
     <xsl:template match="artiste">
-        <xsl:variable name="sexe-artiste" select="@sesxe"></xsl:variable>
+        <xsl:variable name="sexe-artiste" select="@sexe"></xsl:variable>
         <xsl:variable name="pays-artiste" select="@pays"></xsl:variable>
-        <h6 title="sexe : $sexe-artiste pays: $pays">
+        <h6 title="Sexe : {$sexe-artiste} Pays : {$pays-artiste}">
             <span><xsl:value-of select="prenom"/>
             </span><span><xsl:value-of select="nom"/></span>
         </h6>
